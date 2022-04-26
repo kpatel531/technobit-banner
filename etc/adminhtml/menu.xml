@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="Technobit_Banner::menu" title="Technobit" module="Technobit_Banner" translate="title" sortOrder="70" resource="Technobit_Banner::menu"/>
+        <add id="Technobit_Banner::banner" title="Manage Banners" module="Technobit_Banner" sortOrder="20" parent="Technobit_Banner::menu" action="technobitbanner/banner/" resource="Technobit_Banner::manage"/>
+    </menu>
+</config>

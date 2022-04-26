@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+
+<routes xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Webapi:etc/webapi.xsd">
+    <route url="/V1/banner/:id" method="GET">
+        <service class="Technobit\Banner\Api\BannerRepositoryInterface" method="getById"/>
+        <resources>
+            <resource ref="Technobit_Banner::manage"/>
+        </resources>
+    </route>
+    <route url="/V1/banner/search" method="GET">
+        <service class="Technobit\Banner\Api\BannerRepositoryInterface" method="getList"/>
+        <resources>
+            <resource ref="Technobit_Banner::manage"/>
+        </resources>
+    </route>
+    <route url="/V1/banner/:id" method="DELETE">
+        <service class="Technobit\Banner\Api\BannerRepositoryInterface" method="deleteById"/>
+        <resources>
+            <resource ref="Technobit_Banner::delete"/>
+        </resources>
+    </route>
+    <route url="/V1/banner" method="POST">
+        <service class="Technobit\Banner\Api\BannerRepositoryInterface" method="save"/>
+        <resources>
+            <resource ref="Technobit_Banner::save"/>
+        </resources>
+    </route>
+    <route url="/V1/banner/:id" method="PUT">
+        <service class="Technobit\Banner\Api\BannerRepositoryInterface" method="save"/>
+        <resources>
+            <resource ref="Technobit_Banner::save"/>
+        </resources>
+    </route>
+</routes>

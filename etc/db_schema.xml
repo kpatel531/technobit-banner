@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+
+<schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:Setup/Declaration/Schema/etc/schema.xsd">
+    <table name="technobit_banner" resource="default" engine="innodb" comment="Banner Table">
+        <column xsi:type="int" name="banner_id" padding="10" unsigned="true" nullable="false" identity="true"
+                comment="Banner Id"/>
+        <column xsi:type="varchar" name="title" nullable="true" length="255" comment="Title"/>
+        <column xsi:type="varchar" name="target_url" nullable="true" length="255" comment="Target Url" />
+        <column xsi:type="varchar" name="type" nullable="true" length="255" comment="Banner Type" />
+        <column xsi:type="varchar" name="image" nullable="true" length="255" comment="Image Path"/>
+        <column xsi:type="mediumtext" name="content" nullable="true" comment="Content"/>
+        <column xsi:type="mediumtext" name="styles" nullable="true" comment="Styles"/>
+        <column xsi:type="varchar" name="store_id" nullable="true" length="255" comment="Store Id" default="0" />
+        <column xsi:type="smallint" name="sort_order" padding="5" unsigned="true" nullable="true" identity="false"
+                default="0" comment="Sort Order"/>
+        <column xsi:type="smallint" name="status" padding="5" unsigned="true" nullable="true" identity="false"
+                default="0" comment="status"/>
+        <column xsi:type="timestamp" name="updated_at" on_update="true" nullable="true" comment="Updated At"/>
+        <column xsi:type="timestamp" name="created_at" on_update="false" nullable="true" comment="Created At"/>
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="banner_id"/>
+        </constraint>
+        <index referenceId="technobit_banner_title" indexType="fulltext">
+            <column name="title"/>
+        </index>
+    </table>
+</schema>
