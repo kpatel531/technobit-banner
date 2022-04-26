@@ -1,0 +1,115 @@
+/**
+ * Owl Carousel v2.3.4
+ * Copyright 2013-2018 David Deutsch
+ * Licensed under: SEE LICENSE IN https://github.com/OwlCarousel2/OwlCarousel2/blob/master/LICENSE
+ */
+/*
+ * 	Default theme - Owl Carousel CSS File
+ */
+
+
+
+    .owl-theme .owl-nav {
+      margin-top: 0;
+      text-align: center;
+      -webkit-tap-highlight-color: transparent;
+    }
+    .owl-theme .owl-nav [class*='owl-'] {
+        color: #FFF;
+        font-size: 14px;
+        background: #D6D6D6;
+        display: inline-block;
+        cursor: pointer;
+        border-radius: 3px;
+        position: absolute;
+        top: 50%;
+            height: 30px;
+        width: 53px;
+        padding: 0;
+        margin: calc(-40px/2) 0 0;
+    }
+    .owl-theme .owl-nav .owl-next {
+        right: 25px;
+    }
+    .owl-theme .owl-nav .owl-next:after {
+        content: "";
+        background-image: url(../Technobit_Banner/images/arrow.png);
+        height: 30px;
+        width: 53px;
+        position: absolute;
+        top: 0;
+        left:0;
+        transform: rotate(180deg);
+        background-position: 0 0;
+    }
+    .owl-theme .owl-nav .owl-prev {
+        left: 10px;
+        background-repeat: no-repeat;
+    }
+    .owl-theme .owl-nav .owl-prev:after {
+        content: "";
+        background-image: url(../Technobit_Banner/images/arrow.png);
+        height: 30px;
+        width: 53px;
+        position: absolute;
+        top: 0;
+        right: 0;
+        transform: rotate(180deg);
+        background-position: 53px 0;
+    }
+
+    .owl-theme .owl-nav .owl-next:hover:after {
+        background-position: 0 30px;
+    }
+    .owl-theme .owl-nav .owl-prev:hover:after {
+        background-position: 53px 30px;
+    }
+    .owl-theme .owl-nav .disabled {
+        opacity: 0.5;
+        cursor: default;
+    }
+
+    .owl-theme .owl-nav.disabled + .owl-dots {
+        margin-top: 10px;
+    }
+    .owl-theme .owl-dots {
+        text-align: left;
+        -webkit-tap-highlight-color: transparent;
+        position: absolute;
+        bottom: 55px;
+        width: 100%;
+        padding-left: 55px;
+        display: flex;
+        align-items: center;
+    }
+    .owl-theme .owl-dots .owl-dot {
+        display: block;
+        zoom: 1;
+        border: none;
+        box-shadow: none;
+    }
+    .owl-theme .owl-dots .owl-dot span {
+        cursor: pointer;
+        width: 6px;
+        height: 6px;
+        background-color: #002850;
+        border-radius: 50%;
+        top: 4px;
+        margin: 0 10px 0 0;
+        display: block;
+    }
+    .owl-theme .owl-dots .owl-dot.active span {
+        width: 16px;
+        height: 16px;
+        background-color: transparent;
+        border-radius: 50%;
+        border: 2px solid #f1592a;
+    }
+.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__xs) {
+    .owl-theme {
+        .owl-dots {
+            bottom: 25px;
+            padding-left: 15px;
+        }
+    }
+}

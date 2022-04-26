@@ -1,0 +1,50 @@
+<?php
+
+/**
+ * @var \Technobit\Banner\Block\Banner $block
+ */
+?>
+<?php if ($block->isEnable()):  $index = 0; ?>
+    <div class="home-banner-container-wrapper">
+        <div class="home-banner-container">
+            <div data-role="home-banner" class="home-banner owl-carousel owl-theme">
+                <?php foreach ($block->getBannerList() as $banner): ?>
+                    <div class="banner-item slide<?= $banner->getId(); ?>" data-slide-id="active-slide<?= $banner->getId(); ?>" data-slide-index="<?= $index; ?>">
+                        <?php if($banner->getType() == "image"): ?>
+                            <a href="<?= /* @noEscape */ $banner->getTargetUrl(); ?>">
+                                <img alt="<?= /* @noEscape */ $banner->getTitle(); ?>"
+                                     src="<?= /* @noEscape */ $banner->getImageUrl(); ?>" />
+                            </a>
+                        <?php elseif($banner->getType() == "html"): ?>
+                               <?= $block->getSlideHtml($banner); ?>
+                        <?php endif; ?>
+                        <?php if($banner->getStyles()): ?>
+                            <style type="text/css"><?= $block->getSlideStyles($banner); ?></style>
+                        <?php endif; ?>
+                    </div>
+                <?php $index++; endforeach; ?>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript">
+        requirejs(['jquery', 'owlCarousel'], function($) {
+            $(document).ready(function(){
+                var owlCarousel = $('.home-banner').owlCarousel(<?= /* @noEscape */ $block->getConfig(); ?>);
+                owlCarousel.on('changed.owl.carousel', function(evt) {
+                    activeBannerSlide(evt.page.index);
+                });
+                var activeBannerSlide = function(index) {
+                    var owlCarousel = $('.home-banner-container-wrapper');
+                    var activeSlideClass = owlCarousel.find('.owl-item [data-slide-index="'+index+'"]').data('slide-id');
+                    if(activeSlideClass) {
+                        var activeClass = owlCarousel.data('active-slide-class');
+                        owlCarousel.removeClass(activeClass);
+                        owlCarousel.addClass(activeSlideClass);
+                        owlCarousel.data('active-slide-class', activeSlideClass);
+                    }
+                };
+                activeBannerSlide(0);
+            });
+        });
+    </script>
+<?php endif; ?>

@@ -1,0 +1,43 @@
+<?xml version="1.0"?>
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+	<preference for="Technobit\Banner\Api\Data\BannerInterface" type="Technobit\Banner\Model\Banner" />
+	<preference for="Technobit\Banner\Api\BannerRepositoryInterface" type="Technobit\Banner\Model\BannerRepository" />
+	<preference for="Technobit\Banner\Api\Data\BannerSearchResultsInterface" type="Magento\Framework\Api\SearchResults" />
+	<virtualType name="TechnobitBannerGridFilterPool" type="Magento\Framework\View\Element\UiComponent\DataProvider\FilterPool">
+		<arguments>
+			<argument name="appliers" xsi:type="array">
+				<item name="regular" xsi:type="object">Magento\Framework\View\Element\UiComponent\DataProvider\RegularFilter</item>
+				<item name="fulltext" xsi:type="object">Magento\Framework\View\Element\UiComponent\DataProvider\FulltextFilter</item>
+			</argument>
+		</arguments>
+	</virtualType>
+	<virtualType name="TechnobitBannerGridDataProvider" type="Magento\Framework\View\Element\UiComponent\DataProvider\DataProvider">
+		<arguments>
+			<argument name="collection" xsi:type="object" shared="false">Technobit\Banner\Model\ResourceModel\Banner\Collection</argument>
+			<argument name="filterPool" xsi:type="object" shared="false">TechnobitBannerGridFilterPool</argument>
+		</arguments>
+	</virtualType>
+	<virtualType name="Technobit\Banner\Model\ResourceModel\Banner\Grid\Collection" type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
+		<arguments>
+			<argument name="mainTable" xsi:type="string">technobit_banner</argument>
+			<argument name="resourceModel" xsi:type="string">Technobit\Banner\Model\ResourceModel\Banner</argument>
+		</arguments>
+	</virtualType>
+	<type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+		<arguments>
+			<argument name="collections" xsi:type="array">
+				<item name="technobit_banner_listing_data_source" xsi:type="string">Technobit\Banner\Model\ResourceModel\Banner\Grid\Collection</item>
+			</argument>
+		</arguments>
+	</type>
+	<virtualType name="Technobit\Banner\Model\Api\SearchCriteria\BannerCollectionProcessor" type="Magento\Framework\Api\SearchCriteria\CollectionProcessor">
+		<arguments>
+			<argument name="processors" xsi:type="array">
+				<item name="filters" xsi:type="object">Magento\Framework\Api\SearchCriteria\CollectionProcessor\FilterProcessor</item>
+				<item name="sorting" xsi:type="object">Magento\Framework\Api\SearchCriteria\CollectionProcessor\SortingProcessor</item>
+				<item name="pagination" xsi:type="object">Magento\Framework\Api\SearchCriteria\CollectionProcessor\PaginationProcessor</item>
+			</argument>
+		</arguments>
+	</virtualType>
+</config>

@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+    <default>
+        <technobitbanner>
+            <home>
+                <enable>1</enable>
+                <loop>1</loop>
+                <autoplay>1</autoplay>
+                <autoplay_timeout>5000</autoplay_timeout>
+                <autoplay_hover_push>1</autoplay_hover_push>
+                <navigation>1</navigation>
+                <pager>1</pager>
+            </home>
+        </technobitbanner>
+    </default>
+</config>
