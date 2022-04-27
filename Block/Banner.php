@@ -13,7 +13,7 @@ use Magento\Framework\App\Config\ScopeConfigInterface;
 
 /**
  * Class Banner
- * @package Magepix\Banner\Block
+ * @package Technobit\Banner\Block
  */
 class Banner extends Template
 {
